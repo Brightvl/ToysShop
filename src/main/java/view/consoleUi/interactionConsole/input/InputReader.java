@@ -28,6 +28,20 @@ public class InputReader  {
         return scanner.nextLine();
     }
 
+    /**
+     * Ввод для пользователя с сообщением
+     * @param message
+     * @return
+     */
+    public String inputLn(String message) {
+        System.out.println(message);
+        return nextLine();
+    }
+
+    public String input(String message) {
+        System.out.print(message);
+        return nextLine();
+    }
 
 }
 

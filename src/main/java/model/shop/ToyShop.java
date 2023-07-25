@@ -1,56 +1,30 @@
 package model.shop;
 
+
 import model.shop.goods.Toy;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Random;
 
-public class ToyShop {
-    private PriorityQueue<Toy> toysQueue;
+public class ToyShop implements Serializable {
+    private ArrayList<Toy> toysList;
+    private RaffleToys raffleToys;
 
     public ToyShop() {
-        toysQueue = new PriorityQueue<>((t1, t2) -> t2.getWeight() - t1.getWeight());
+        this.toysList = new ArrayList<>();
     }
 
-    public void addToy(Toy toy) {
-        toysQueue.add(toy);
+    public void add(Toy toy) {
+        toysList.add(toy);
+
     }
 
-    public Toy getToy() {
-        if (toysQueue.isEmpty()) {
-            return null;
-        }
-
-        int totalWeight = 0;
-        for (Toy toy : toysQueue) {
-            totalWeight += toy.getWeight();
-        }
-
-        Random random = new Random();
-        int randomWeight = random.nextInt(totalWeight);
-
-        int cumulativeWeight = 0;
-        for (Toy toy : toysQueue) {
-            cumulativeWeight += toy.getWeight();
-            if (randomWeight < cumulativeWeight) {
-                toysQueue.remove(toy);
-                return toy;
-            }
-        }
-
-        return null; // If no toy is selected (should not happen with valid data).
+    public ArrayList<Toy> getAllToys() {
+        return toysList;
     }
 
-    public void saveToyToFile(Toy toy, String filename) {
-        try (FileWriter writer = new FileWriter(filename, true)) {
-            writer.write(toy.getName() + System.lineSeparator());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setWeightToy(Toy toy, int weight) {
+        toy.setWeight(weight);
     }
 
 

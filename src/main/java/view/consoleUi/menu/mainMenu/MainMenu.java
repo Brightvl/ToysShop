@@ -2,8 +2,7 @@ package view.consoleUi.menu.mainMenu;
 
 import view.consoleUi.ConsoleUI;
 import view.consoleUi.menu.Menu;
-import view.consoleUi.menu.commands.CloseProgram;
-import view.consoleUi.menu.commands.RaffleToys;
+import view.consoleUi.menu.commands.*;
 
 import java.util.Arrays;
 
@@ -13,6 +12,9 @@ public class MainMenu extends Menu {
     public MainMenu(ConsoleUI consoleUi) {
         super(Arrays.asList(
                 new RaffleToys(consoleUi),
+                new ChangeWeightToy(consoleUi),
+                new AddToy(consoleUi),
+                new ShowToys(consoleUi),
                 new CloseProgram(consoleUi)));
         setRunning(true);
     }
