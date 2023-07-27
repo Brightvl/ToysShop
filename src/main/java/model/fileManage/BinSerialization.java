@@ -1,6 +1,7 @@
 package model.fileManage;
 
 
+
 import model.fileManage.interfaces.Loadable;
 import model.fileManage.interfaces.Savable;
 
@@ -39,6 +40,7 @@ public class BinSerialization implements Savable, Loadable {
             System.out.println("Export error");
         }
     }
+
 
 
     @Override

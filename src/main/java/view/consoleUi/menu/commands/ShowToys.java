@@ -3,6 +3,9 @@ package view.consoleUi.menu.commands;
 import view.consoleUi.ConsoleUI;
 import view.consoleUi.menu.Command;
 
+/**
+ * Класс ShowToys представляет команду для показа всех видов игрушек.
+ */
 public class ShowToys implements Command {
     private ConsoleUI consoleUi;
 

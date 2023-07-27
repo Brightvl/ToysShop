@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ToyShop implements Serializable {
     private ArrayList<Toy> toysList;
-    private RaffleToys raffleToys;
+
 
     public ToyShop() {
         this.toysList = new ArrayList<>();
@@ -16,7 +16,6 @@ public class ToyShop implements Serializable {
 
     public void add(Toy toy) {
         toysList.add(toy);
-
     }
 
     public ArrayList<Toy> getAllToys() {
