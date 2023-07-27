@@ -3,6 +3,9 @@ package view.consoleUi.menu.commands;
 import view.consoleUi.menu.Command;
 import view.consoleUi.ConsoleUI;
 
+/**
+ * Класс RaffleToys представляет команду для розыгрыша игрушки.
+ */
 public class RaffleToys implements Command {
 
     private ConsoleUI consoleUi;

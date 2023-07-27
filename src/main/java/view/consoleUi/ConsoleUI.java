@@ -1,12 +1,18 @@
 package view.consoleUi;
 
+import model.shop.goods.Toy;
 import presenter.Presenter;
 import view.View;
 import view.consoleUi.interactionConsole.input.InputReader;
 import view.consoleUi.interactionConsole.output.OutputReader;
 import view.consoleUi.menu.mainMenu.MainMenu;
 
+import java.util.ArrayList;
 
+/**
+ * ConsoleUI представляет консольный пользовательский интерфейс для приложения игрушечного магазина.
+ * Он реализует интерфейс View и предоставляет методы для взаимодействия с пользователем через консоль.
+ */
 public class ConsoleUI implements View {
 
     private Presenter presenter;
@@ -21,6 +27,16 @@ public class ConsoleUI implements View {
         this.mainMenu = new MainMenu(this);
     }
 
+    @Override
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    /**
+     * Метод runMainMenu() запускает главное меню.
+     * Пользователю выводится список пунктов меню, и программа ожидает ввода выбранного пункта.
+     * После выбора пункта меню происходит выполнение соответствующей команды.
+     */
     @Override
     public void runProgram() {
         presenter.loadToys();
@@ -48,13 +64,20 @@ public class ConsoleUI implements View {
     }
 
     public void raffleToys() {
-
-
+        presenter.raffleToy();
     }
 
     public void showAllToys() {
-        outputReader.printLn(presenter.getAllToys().toString());
-
+        ArrayList<Toy> allToys = presenter.getAllToys();
+        if (allToys.isEmpty()) {
+            outputReader.printLn("В магазине нет игрушек.");
+            return;
+        }
+        outputReader.printLn("Список всех игрушек:");
+        outputReader.printToyInfo();
+        for (Toy toy : allToys) {
+            outputReader.printLn(toy.toString());
+        }
     }
 
     public void addToy() {
@@ -77,6 +100,20 @@ public class ConsoleUI implements View {
             else outputReader.printLn("Игрушка не найдена");
         } catch (NumberFormatException numberFormatException) {
             outputReader.printLn("Ошибка ввода");
+        }
+    }
+
+    public void ShowWin() {
+        outputReader.printToyInfo();
+        for (Toy toy : presenter.showWin()) {
+            outputReader.printLn(toy.toString());
+        }
+    }
+
+    public void getToysQueue() {
+        outputReader.printToyInfo();
+        for (Toy toy : presenter.getToysQueue()) {
+            outputReader.printLn(toy.toString());
         }
     }
 

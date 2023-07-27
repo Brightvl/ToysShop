@@ -3,6 +3,9 @@ package view.consoleUi.menu.commands;
 import view.consoleUi.ConsoleUI;
 import view.consoleUi.menu.Command;
 
+/**
+ * Класс AddToy представляет команду для добавления новой игрушки.
+ */
 public class AddToy implements Command {
     private ConsoleUI consoleUI;
 
@@ -12,7 +15,7 @@ public class AddToy implements Command {
 
     @Override
     public String getDescription() {
-        return "Добавить игрушку";
+        return "Добавить игрушку в магазин";
     }
 
     @Override

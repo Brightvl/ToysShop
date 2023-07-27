@@ -6,7 +6,6 @@ import view.consoleUi.ConsoleUI;
 
 /**
  * Класс CloseProgram представляет команду выхода из программы с сохранением в меню консольного пользовательского интерфейса (UI).
- * Реализует интерфейс Sortedable.
  */
 public class CloseProgram implements Command {
 
@@ -14,7 +13,6 @@ public class CloseProgram implements Command {
 
     /**
      * Создает новый объект CloseProgram.
-     *
      * @param consoleUI объект ConsoleUI, используемый для завершения программы с сохранением
      */
     public CloseProgram(ConsoleUI consoleUI) {
