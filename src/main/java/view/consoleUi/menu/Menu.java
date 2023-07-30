@@ -1,15 +1,18 @@
 package view.consoleUi.menu;
 
+import view.consoleUi.menu.commands.interfaces.Command;
+
 import java.util.List;
 
 public abstract class Menu {
     private List<Command> commandList;
 
+    private boolean isRunning;
 
     public Menu(List<Command> commandList) {
         this.commandList = commandList;
-
     }
+
 
     /**
      * Возвращает строку, содержащую отформатированное меню с описаниями команд.
@@ -62,6 +65,16 @@ public abstract class Menu {
         return -1;
     }
 
+    public boolean isRunning() {
+        return isRunning;
+    }
 
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
+
+    public void addCommand(Command command) {
+        commandList.add(command);
+    }
 }
 

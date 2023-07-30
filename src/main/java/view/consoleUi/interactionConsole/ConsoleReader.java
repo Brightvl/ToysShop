@@ -1,20 +1,16 @@
-package view.consoleUi.interactionConsole.input;
-
-
-
+package view.consoleUi.interactionConsole;
 
 import java.util.Scanner;
 
-public class InputReader  {
+public class ConsoleReader  implements Output, Input{
+
     private Scanner scanner;
 
-    public InputReader() {
-        scanner = new Scanner(System.in);
+    public ConsoleReader() {
+        this.scanner = new Scanner(System.in);
     }
 
-
-
-/**
+    /**
      * Проверяет веденные пользователем данные, являются ли они целыми числами
      *
      * @param line входная строка
@@ -33,7 +29,7 @@ public class InputReader  {
      * @param message
      * @return
      */
-    public String inputLn(String message) {
+    public String inputln(String message) {
         System.out.println(message);
         return nextLine();
     }
@@ -43,5 +39,20 @@ public class InputReader  {
         return nextLine();
     }
 
-}
+    public void println(String message) {
+        System.out.println(message);
+    }
 
+    public void print(String message) {
+        System.out.print(message);
+    }
+
+    public void printToyInfo() {
+        System.out.printf("%-3s %-14s %-2s %-8s%n", "id", "Название", "Количество", "Вес");
+    }
+
+    public void printWonToyInfo() {
+        System.out.printf("%-3s %-14s %-2s %-8s%n", "№", "Название", "Количество", "Выиграно штук");
+    }
+
+}

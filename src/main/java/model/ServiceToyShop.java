@@ -40,7 +40,7 @@ public class ServiceToyShop {
         this.loadable.setFilePath(filePath);
         this.toyShop = (ToyShop) loadable.loadFile();
         this.raffleToys = new RaffleToys(toyShop.getAllToys());
-        Toy.setCounter(checkMaxId(toyShop.getAllToys()));
+        Toy.setCounter(checkMaxId(toyShop.getAllToys())+1);
     }
 
     /**
@@ -79,7 +79,6 @@ public class ServiceToyShop {
     public int setWeightToy(String nameToy, int weight) {
         try {
             getToy(nameToy).setWeight(weight);
-            System.out.println(raffleToys.toString());
             return 0;
         }
         catch (Exception e) {

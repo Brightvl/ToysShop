@@ -1,7 +1,7 @@
 package view.consoleUi.menu.commands;
 
 import view.consoleUi.ConsoleUI;
-import view.consoleUi.menu.Command;
+import view.consoleUi.menu.commands.interfaces.Command;
 
 /**
  * Класс ShowWin представляет команду для показа выигранных игрушек.
@@ -20,7 +20,7 @@ public class ShowWin implements Command {
      */
     @Override
     public String getDescription() {
-        return "Показать выигранные игрушки";
+        return "Что я выиграл?";
     }
 
     /**

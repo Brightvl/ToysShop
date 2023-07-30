@@ -1,7 +1,7 @@
 package view.consoleUi.menu.commands;
 
 import view.consoleUi.ConsoleUI;
-import view.consoleUi.menu.Command;
+import view.consoleUi.menu.commands.interfaces.Command;
 
 /**
  * Класс ChangeWeightToy представляет команду для изменения частоты выпадения игрушки.

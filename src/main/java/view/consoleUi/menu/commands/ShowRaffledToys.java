@@ -1,7 +1,7 @@
 package view.consoleUi.menu.commands;
 
 import view.consoleUi.ConsoleUI;
-import view.consoleUi.menu.Command;
+import view.consoleUi.menu.commands.interfaces.Command;
 
 public class ShowRaffledToys implements Command {
 
@@ -14,7 +14,7 @@ public class ShowRaffledToys implements Command {
 
     @Override
     public String getDescription() {
-        return "Показать разыгрываемые игрушки";
+        return "Список призовых игрушек";
     }
 
     @Override

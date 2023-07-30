@@ -1,8 +1,8 @@
 package view.consoleUi.menu.commands;
 
 
-import view.consoleUi.menu.Command;
 import view.consoleUi.ConsoleUI;
+import view.consoleUi.menu.commands.interfaces.Command;
 
 /**
  * Класс CloseProgram представляет команду выхода из программы с сохранением в меню консольного пользовательского интерфейса (UI).

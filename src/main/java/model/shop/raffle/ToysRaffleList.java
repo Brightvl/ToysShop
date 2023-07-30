@@ -10,11 +10,12 @@ import java.util.Random;
 
 public class ToysRaffleList<T extends Toy> {
 
-    PriorityQueue<Toy> toysQueue;
+    private PriorityQueue<Toy> toysQueue;
     private Random random;
+    private ArrayList<T> copyToysList;
 
     public ToysRaffleList(ArrayList<T> toysList) {
-        ArrayList<T> copyToysList = new ArrayList<>(toysList);
+        this.copyToysList = new ArrayList<>(toysList);
         this.toysQueue = new PriorityQueue<>(new WeightComparator());
         this.random = new Random();
 
