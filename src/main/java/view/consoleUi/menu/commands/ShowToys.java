@@ -1,7 +1,7 @@
 package view.consoleUi.menu.commands;
 
 import view.consoleUi.ConsoleUI;
-import view.consoleUi.menu.Command;
+import view.consoleUi.menu.commands.interfaces.Command;
 
 /**
  * Класс ShowToys представляет команду для показа всех видов игрушек.
@@ -15,7 +15,7 @@ public class ShowToys implements Command {
 
     @Override
     public String getDescription() {
-        return "Показать все виды игрушек";
+        return "Список игрушек в магазине";
     }
 
     @Override

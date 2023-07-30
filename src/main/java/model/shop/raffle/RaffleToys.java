@@ -4,7 +4,6 @@ import model.shop.goods.Toy;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 
@@ -15,10 +14,10 @@ import java.util.PriorityQueue;
  * Реализует интерфейс Command и вызывает соответствующий метод в ConsoleUI для розыгрыша игрушки.
  */
 public class RaffleToys<T extends Toy> {
-    ToysRaffleList<Toy> toysRaffleList;
+    private ToysRaffleList<Toy> toysRaffleList;
 
     public RaffleToys(ArrayList<Toy> toysList) {
-        toysRaffleList = new ToysRaffleList<>(toysList);
+        this. toysRaffleList = new ToysRaffleList<>(toysList);
     }
 
     /**

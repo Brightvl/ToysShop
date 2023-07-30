@@ -3,9 +3,9 @@ package view.consoleUi;
 import model.shop.goods.Toy;
 import presenter.Presenter;
 import view.View;
-import view.consoleUi.interactionConsole.input.InputReader;
-import view.consoleUi.interactionConsole.output.OutputReader;
-import view.consoleUi.menu.mainMenu.MainMenu;
+
+import view.consoleUi.interactionConsole.ConsoleReader;
+import view.consoleUi.menu.typesMenu.MainMenu;
 
 import java.util.ArrayList;
 
@@ -16,13 +16,11 @@ import java.util.ArrayList;
 public class ConsoleUI implements View {
 
     private Presenter presenter;
-    private InputReader inputReader;
-    private OutputReader outputReader;
+    private ConsoleReader consoleReader;
     private MainMenu mainMenu;
 
     public ConsoleUI() {
-        this.inputReader = new InputReader();
-        this.outputReader = new OutputReader();
+        this.consoleReader = new ConsoleReader();
         this.presenter = new Presenter();
         this.mainMenu = new MainMenu(this);
     }
@@ -43,21 +41,18 @@ public class ConsoleUI implements View {
         runMainMenu();
     }
 
-
     private void runMainMenu() {
-
         while (mainMenu.isRunning()) {
-            outputReader.printLn(mainMenu.printMenu());
-
-            String choice = inputReader.input("Выберите пункт меню: ");
+            consoleReader.println(mainMenu.printMenu());
+            String choice = consoleReader.input("Выберите пункт меню: ");
             if (mainMenu.checkInputLineMenu(choice) == -1) {
-                outputReader.printLn("Ошибка ввода");
+                consoleReader.println("Ошибка ввода");
                 continue;
             }
             mainMenu.execute(Integer.parseInt(choice));
         }
-
     }
+
 
     public void closeProgram() {
         mainMenu.setRunning(false);
@@ -70,50 +65,55 @@ public class ConsoleUI implements View {
     public void showAllToys() {
         ArrayList<Toy> allToys = presenter.getAllToys();
         if (allToys.isEmpty()) {
-            outputReader.printLn("В магазине нет игрушек.");
+            consoleReader.println("В магазине нет игрушек.");
             return;
         }
-        outputReader.printLn("Список всех игрушек:");
-        outputReader.printToyInfo();
+        consoleReader.println("Список всех игрушек:");
+        consoleReader.printToyInfo();
         for (Toy toy : allToys) {
-            outputReader.printLn(toy.toString());
+            consoleReader.println(toy.toString());
         }
     }
 
     public void addToy() {
-        String nameToy = inputReader.inputLn("Введите название");
+        String nameToy = consoleReader.inputln("Введите название");
         try {
-            int quantity = Integer.parseInt(inputReader.inputLn("Введите количество"));
-            int dropFrequency = Integer.parseInt(inputReader.inputLn("Введите шанс выпадения"));
+            int quantity = Integer.parseInt(consoleReader.inputln("Введите количество"));
+            int dropFrequency = Integer.parseInt(consoleReader.inputln("Введите шанс выпадения"));
             presenter.addToy(nameToy, quantity, dropFrequency);
         } catch (NumberFormatException numberFormatException) {
-            outputReader.printLn("Произошла ошибка");
+            consoleReader.println("Произошла ошибка");
         }
     }
 
     public void setWeightToy() {
-        String nameToy = inputReader.inputLn("Введите название");
+        String nameToy = consoleReader.inputln("Введите название");
         try {
-            int dropFrequency = Integer.parseInt(inputReader.inputLn("Введите шанс выпадения"));
+            int dropFrequency = Integer.parseInt(consoleReader.inputln("Введите шанс выпадения"));
             if (presenter.setWeightToy(nameToy, dropFrequency) == 0)
-                outputReader.printLn("Шанс выпадения изменен");
-            else outputReader.printLn("Игрушка не найдена");
+                consoleReader.println("Шанс выпадения изменен");
+            else consoleReader.println("Игрушка не найдена");
         } catch (NumberFormatException numberFormatException) {
-            outputReader.printLn("Ошибка ввода");
+            consoleReader.println("Ошибка ввода");
         }
     }
 
     public void ShowWin() {
-        outputReader.printToyInfo();
-        for (Toy toy : presenter.showWin()) {
-            outputReader.printLn(toy.toString());
+        ArrayList<Toy> temp = presenter.showWin();
+        if (!temp.isEmpty()) {
+            consoleReader.printToyInfo();
+            for (Toy toy : temp) {
+                consoleReader.println(toy.toString());
+            }
+        } else {
+            consoleReader.println("Вы еще ничего не выиграли");
         }
     }
 
     public void getToysQueue() {
-        outputReader.printToyInfo();
+        consoleReader.printToyInfo();
         for (Toy toy : presenter.getToysQueue()) {
-            outputReader.printLn(toy.toString());
+            consoleReader.println(toy.toString());
         }
     }
 
